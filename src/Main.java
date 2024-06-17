@@ -649,6 +649,7 @@ public class Main {
         burstConfig(burstParticles, burstFilePath);
         System.out.println(burstParticles);
 
+
         try {                               // prints the contents of the dragEffect file to the terminal
             File ppFile = new File(dragFilePath);
             Scanner fileReader = new Scanner(ppFile);

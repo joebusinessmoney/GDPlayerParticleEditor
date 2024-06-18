@@ -3,10 +3,13 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 public class gdppeUI {
 
     public gdppeUI() {
+
+
         dragSlider.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
@@ -55,11 +58,31 @@ public class gdppeUI {
             }
         });
 
-        defualtParticle.addActionListener(new ActionListener() {
+        resetDefault.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                boolean particlesDefault = defualtParticle.isSelected();
-                System.out.println(particlesDefault);
+                dragSlider.setValue(30);
+                shipSlider.setValue(40);
+                burstSlider.setValue(50);
+                swingSlider.setValue(10);
+                landSlider.setValue(10);
+            }
+        });
+
+
+        browseFile.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               JFileChooser chooser = new JFileChooser(new File(System.getProperty("user.home") + ""));
+               chooser.setDialogTitle("Select Location");
+               chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+               chooser.setAcceptAllFileFilterUsed(true);
+
+               if (chooser.showSaveDialog(new JFileChooser()) == JFileChooser.APPROVE_OPTION)
+               {
+                   String fileID = chooser.getSelectedFile().getPath();
+                   filePath.setText(fileID);
+               }
             }
         });
     }
@@ -79,11 +102,13 @@ public class gdppeUI {
     private JSlider swingSlider;
     private JSlider burstSlider;
     private JRadioButton noParticle;
-    private JRadioButton defualtParticle;
     private JLabel dragLabel;
     private JLabel shipLabel;
     private JLabel burstLabel;
     private JLabel landLabel;
     private JLabel swingLabel;
     private JButton setConfig;
+    private JButton resetDefault;
+    private JButton browseFile;
+    private JTextArea filePath;
 }

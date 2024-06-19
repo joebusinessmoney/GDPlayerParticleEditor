@@ -6,8 +6,15 @@ import java.awt.event.ActionListener;
 import java.io.File;
 
 public class gdppeUI {
+    int dragValue = 30;
+    int shipValue = 40;
+    int burstValue = 50;
+    int landValue = 10;
+    int swingValue = 10;
+    String fileID = "D:\\Steam\\steamapps\\common\\Geometry Dash\\Resources\\";
 
     public gdppeUI() {
+
 
 
         dragSlider.addChangeListener(new ChangeListener() {
@@ -66,6 +73,8 @@ public class gdppeUI {
                 burstSlider.setValue(50);
                 swingSlider.setValue(10);
                 landSlider.setValue(10);
+
+                statusMessage.setText("default");
             }
         });
 
@@ -74,15 +83,32 @@ public class gdppeUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                JFileChooser chooser = new JFileChooser(new File(System.getProperty("user.home") + ""));
-               chooser.setDialogTitle("Select Location");
+               chooser.setDialogTitle("Select your Steam folder (should contain folder named 'steamapps')");
                chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
                chooser.setAcceptAllFileFilterUsed(true);
 
                if (chooser.showSaveDialog(new JFileChooser()) == JFileChooser.APPROVE_OPTION)
                {
-                   String fileID = chooser.getSelectedFile().getPath();
+                   fileID = chooser.getSelectedFile().getPath() + "\\steamapps\\common\\Geometry Dash\\Resources\\";
                    filePath.setText(fileID);
+                   System.out.println(fileID);
                }
+
+
+            }
+
+
+        });
+        setConfig.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dragValue = dragSlider.getValue();
+                shipValue = shipSlider.getValue();
+                burstValue = burstSlider.getValue();
+                landValue = landSlider.getValue();
+                swingValue = swingSlider.getValue();
+
+                Main.dragConfig(dragValue, fileID + "dragEffect.plist");
             }
         });
     }
@@ -111,4 +137,5 @@ public class gdppeUI {
     private JButton resetDefault;
     private JButton browseFile;
     private JTextArea filePath;
+    private JLabel statusMessage;
 }

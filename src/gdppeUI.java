@@ -11,6 +11,7 @@ public class gdppeUI {
     int burstValue = 50;
     int landValue = 10;
     int swingValue = 10;
+    int robotValue = 50;
     String fileID = "D:\\Steam\\steamapps\\common\\Geometry Dash\\Resources\\";
 
     public gdppeUI() {
@@ -49,6 +50,14 @@ public class gdppeUI {
             }
         });
 
+        robotSlider.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                int robotVal = robotSlider.getValue();
+                robotLabel.setText("Robot particle amount: " + String.valueOf(robotVal));
+            }
+        });
+
         swingSlider.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
@@ -73,6 +82,7 @@ public class gdppeUI {
                 burstSlider.setValue(50);
                 swingSlider.setValue(10);
                 landSlider.setValue(10);
+                robotSlider.setValue(50);
 
                 statusMessage.setText("default");
             }
@@ -83,7 +93,7 @@ public class gdppeUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                JFileChooser chooser = new JFileChooser(new File(System.getProperty("user.home") + ""));
-               chooser.setDialogTitle("Select your Steam folder (should contain folder named 'steamapps')");
+               chooser.setDialogTitle("Select your Steam folder (which should contain folder named 'steamapps')");
                chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
                chooser.setAcceptAllFileFilterUsed(true);
 
@@ -107,10 +117,20 @@ public class gdppeUI {
                 burstValue = burstSlider.getValue();
                 landValue = landSlider.getValue();
                 swingValue = swingSlider.getValue();
+                robotValue = robotSlider.getValue();
 
                 Main.dragConfig(dragValue, fileID + "dragEffect.plist");
+                Main.shipConfig(shipValue, fileID + "shipDragEffect.plist");
+                Main.burstConfig(dragValue, fileID + "burstEffect.plist");
+                Main.landConfig(landValue, fileID + "landEffect.plist");
+                Main.swingConfig(swingValue, fileID + "swingBurstEffect.plist");
+                Main.robotConfig(robotValue, fileID + "burstEffect2.plist");
+
+                statusMessage.setText("changes applied");
+
             }
         });
+
     }
 
     public static void main(String[] args) {
@@ -138,4 +158,6 @@ public class gdppeUI {
     private JButton browseFile;
     private JTextArea filePath;
     private JLabel statusMessage;
+    private JSlider robotSlider;
+    private JLabel robotLabel;
 }

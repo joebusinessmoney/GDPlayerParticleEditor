@@ -1,3 +1,5 @@
+package GDPPE;
+
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -12,11 +14,11 @@ public class gdppeUI {
     int landValue = 10;
     int swingValue = 10;
     int robotValue = 50;
+    boolean noParticles = false;
+    int changesCounter = 0;
     String fileID = "D:\\Steam\\steamapps\\common\\Geometry Dash\\Resources\\";
 
     public gdppeUI() {
-
-
 
         dragSlider.addChangeListener(new ChangeListener() {
             @Override
@@ -118,28 +120,42 @@ public class gdppeUI {
                 landValue = landSlider.getValue();
                 swingValue = swingSlider.getValue();
                 robotValue = robotSlider.getValue();
+                noParticles = noParticle.isSelected();
+                changesCounter++;
 
-                Main.dragConfig(dragValue, fileID + "dragEffect.plist");
-                Main.shipConfig(shipValue, fileID + "shipDragEffect.plist");
-                Main.burstConfig(dragValue, fileID + "burstEffect.plist");
-                Main.landConfig(landValue, fileID + "landEffect.plist");
-                Main.swingConfig(swingValue, fileID + "swingBurstEffect.plist");
-                Main.robotConfig(robotValue, fileID + "burstEffect2.plist");
+                System.out.println(noParticles);
 
-                statusMessage.setText("changes applied");
+                if (noParticles != false) {
+                    dragValue = 0;
+                    shipValue = 0;
+                    burstValue = 0;
+                    landValue = 0;
+                    swingValue = 0;
+                    robotValue = 0;
+
+                }
+                    Main.dragConfig(dragValue, fileID + "dragEffect.plist");
+                    Main.shipConfig(shipValue, fileID + "shipDragEffect.plist");
+                    Main.burstConfig(burstValue, fileID + "burstEffect.plist");
+                    Main.landConfig(landValue, fileID + "landEffect.plist");
+                    Main.swingConfig(swingValue, fileID + "swingBurstEffect.plist");
+                    Main.robotConfig(robotValue, fileID + "burstEffect2.plist");
+
+
+                statusMessage.setText("changes applied (" + changesCounter + ")");
 
             }
         });
 
     }
 
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("gdppeUI");
-        frame.setContentPane(new gdppeUI().gdppeWindow);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-    }
+        static void run() {
+            JFrame frame = new JFrame("gdppeUI");
+            frame.setContentPane(new gdppeUI().gdppeWindow);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.pack();
+            frame.setVisible(true);
+        }
     private JPanel gdppeWindow;
     private JLabel title;
     public JSlider dragSlider;

@@ -1,3 +1,4 @@
+package GDPPE;
 
 import java.io.*;
 import java.util.Scanner;
@@ -720,6 +721,8 @@ public class Main {
     }
 
     public static void main(String[] args) {
+
+        gdppeUI.run();
 
         String dragFilePath = "D:\\Steam\\steamapps\\common\\Geometry Dash\\Resources\\dragEffect.plist"; //default 30
         String landFilePath = "D:\\Steam\\steamapps\\common\\Geometry Dash\\Resources\\landEffect.plist"; //default 10

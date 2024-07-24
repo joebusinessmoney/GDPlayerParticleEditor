@@ -594,9 +594,9 @@ public class Main {
                     "</plist>\n");
             editBurstConfig.close();
 
-            System.out.println("swing particle config set at " + burstNum);
+            System.out.println("burst particle config set at " + burstNum);
         } catch (IOException e) {
-            System.out.println("issue setting swing particle config :(");
+            System.out.println("issue setting burst particle config :(");
             e.printStackTrace();
         }
     }
@@ -713,9 +713,128 @@ public class Main {
                     "</plist>\n");
             editRobotConfig.close();
 
-            System.out.println("swing particle config set at " + robotNum);
+            System.out.println("robot particle config set at " + robotNum);
         } catch (IOException e) {
-            System.out.println("issue setting swing particle config :(");
+            System.out.println("issue setting robot particle config :(");
+            e.printStackTrace();
+        }
+    }
+    static void orbConfig(int orbNum, String orbFilePath) {
+        try {
+            FileWriter editOrbConfig = new FileWriter(orbFilePath);
+            editOrbConfig.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                    "<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n" +
+                    "<plist version=\"1.0\">\n" +
+                    "<dict>\n" +
+                    "\t<key>angle</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>angleVariance</key>\n" +
+                    "\t<real>360</real>\n" +
+                    "\t<key>blendFuncDestination</key>\n" +
+                    "\t<integer>1</integer>\n" +
+                    "\t<key>blendFuncSource</key>\n" +
+                    "\t<integer>770</integer>\n" +
+                    "\t<key>duration</key>\n" +
+                    "\t<real>-1</real>\n" +
+                    "\t<key>emitterType</key>\n" +
+                    "\t<real>1</real>\n" +
+                    "\t<key>finishColorAlpha</key>\n" +
+                    "\t<real>1</real>\n" +
+                    "\t<key>finishColorBlue</key>\n" +
+                    "\t<real>1</real>\n" +
+                    "\t<key>finishColorGreen</key>\n" +
+                    "\t<real>1</real>\n" +
+                    "\t<key>finishColorRed</key>\n" +
+                    "\t<real>1</real>\n" +
+                    "\t<key>finishColorVarianceAlpha</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>finishColorVarianceBlue</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>finishColorVarianceGreen</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>finishColorVarianceRed</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>finishParticleSize</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>finishParticleSizeVariance</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>gravityx</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>gravityy</key>\n" +
+                    "\t<real>-300</real>\n" +
+                    "\t<key>maxParticles</key>\n" +
+                    "\t<real> " + orbNum + "</real>\n" +
+                    "\t<key>maxRadius</key>\n" +
+                    "\t<real>20</real>\n" +
+                    "\t<key>maxRadiusVariance</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>minRadius</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>particleLifespan</key>\n" +
+                    "\t<real>0.30000001192092896</real>\n" +
+                    "\t<key>particleLifespanVariance</key>\n" +
+                    "\t<real>0.10000000149011612</real>\n" +
+                    "\t<key>radialAccelVariance</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>radialAcceleration</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>rotatePerSecond</key>\n" +
+                    "\t<real>360</real>\n" +
+                    "\t<key>rotatePerSecondVariance</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>rotationEnd</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>rotationEndVariance</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>rotationStart</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>rotationStartVariance</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>sourcePositionVariancex</key>\n" +
+                    "\t<real>3</real>\n" +
+                    "\t<key>sourcePositionVariancey</key>\n" +
+                    "\t<real>5</real>\n" +
+                    "\t<key>sourcePositionx</key>\n" +
+                    "\t<real>153.6148681640625</real>\n" +
+                    "\t<key>sourcePositiony</key>\n" +
+                    "\t<real>175.31658935546875</real>\n" +
+                    "\t<key>speed</key>\n" +
+                    "\t<real>75</real>\n" +
+                    "\t<key>speedVariance</key>\n" +
+                    "\t<real>20</real>\n" +
+                    "\t<key>startColorAlpha</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>startColorBlue</key>\n" +
+                    "\t<real>1</real>\n" +
+                    "\t<key>startColorGreen</key>\n" +
+                    "\t<real>1</real>\n" +
+                    "\t<key>startColorRed</key>\n" +
+                    "\t<real>1</real>\n" +
+                    "\t<key>startColorVarianceAlpha</key>\n" +
+                    "\t<real>0.69812500476837158</real>\n" +
+                    "\t<key>startColorVarianceBlue</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>startColorVarianceGreen</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>startColorVarianceRed</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>startParticleSize</key>\n" +
+                    "\t<real>4</real>\n" +
+                    "\t<key>startParticleSizeVariance</key>\n" +
+                    "\t<real>2</real>\n" +
+                    "\t<key>tangentialAccelVariance</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>tangentialAcceleration</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>textureFileName</key>\n" +
+                    "\t<string>square.png</string>\n" +
+                    "</dict>\n" +
+                    "</plist>\n");
+            editOrbConfig.close();
+
+            System.out.println("orb particle config set at " + orbNum);
+        } catch (IOException e) {
+            System.out.println("issue setting orb particle config :(");
             e.printStackTrace();
         }
     }
@@ -730,6 +849,7 @@ public class Main {
         String swingFilePath = "D:\\Steam\\steamapps\\common\\Geometry Dash\\Resources\\swingBurstEffect.plist"; //default 10
         String burstFilePath = "D:\\Steam\\steamapps\\common\\Geometry Dash\\Resources\\burstEffect.plist"; //default 50
         String robotFilePath = "D:\\Steam\\steamapps\\common\\Geometry Dash\\Resources\\burstEffect2.plist"; //default 50
+        String orbFilePath = "D:\\Steam\\steamapps\\common\\Geometry Dash\\Resources\\ringEffect.plist"; //default 30
 
         int dragParticles = 30;
         int landParticles = 10;
@@ -737,6 +857,7 @@ public class Main {
         int swingParticles = 10;
         int burstParticles = 50;
         int robotParticles = 50;
+        int orbParticles = 30;
 
 
         System.out.println("Please enter drag particle amount (0 to turn off, default is 30, 1000+ may affect performance)");
@@ -774,6 +895,12 @@ public class Main {
         robotParticles = robotInput.nextInt();
         robotConfig(robotParticles, robotFilePath);
         System.out.println(robotParticles);
+
+        System.out.println("Please enter orb particle amount (0 to turn off, default is 30, 1000+ may affect performance)");
+        Scanner orbInput = new Scanner(System.in);
+        orbParticles = orbInput.nextInt();
+        orbConfig(orbParticles, orbFilePath);
+        System.out.println(orbParticles);
 
 
         try {                               // prints the contents of the dragEffect file to the terminal

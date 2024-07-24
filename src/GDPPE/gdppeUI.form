@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="GDPPE.gdppeUI">
-  <grid id="27dc6" binding="gdppeWindow" layout-manager="GridLayoutManager" row-count="16" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="gdppeWindow" layout-manager="GridLayoutManager" row-count="18" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="918" height="485"/>
+      <xy x="20" y="20" width="918" height="560"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -87,7 +87,7 @@
       </component>
       <component id="bc711" class="javax.swing.JButton" binding="setConfig">
         <constraints>
-          <grid row="14" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="16" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Apply changes"/>
@@ -135,7 +135,7 @@
       </component>
       <component id="22a46" class="javax.swing.JButton" binding="resetDefault">
         <constraints>
-          <grid row="13" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="15" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Reset to default"/>
@@ -169,7 +169,7 @@
       </component>
       <component id="7aa2f" class="javax.swing.JLabel" binding="statusMessage">
         <constraints>
-          <grid row="15" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="17" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value=""/>
@@ -193,6 +193,37 @@
         </constraints>
         <properties>
           <text value="Robot particle amount: 50"/>
+        </properties>
+      </component>
+      <component id="73664" class="javax.swing.JLabel" binding="orbLabel">
+        <constraints>
+          <grid row="13" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Orb particle amount: 30"/>
+        </properties>
+      </component>
+      <component id="7b5f9" class="javax.swing.JSlider" binding="orbSlider">
+        <constraints>
+          <grid row="14" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <majorTickSpacing value="100"/>
+          <maximum value="1000"/>
+          <minorTickSpacing value="10"/>
+          <paintLabels value="false"/>
+          <paintTicks value="true"/>
+          <snapToTicks value="true"/>
+          <value value="30"/>
+          <valueIsAdjusting value="false"/>
+        </properties>
+      </component>
+      <component id="5f535" class="javax.swing.JRadioButton" binding="noAll">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Disable all particles"/>
         </properties>
       </component>
     </children>

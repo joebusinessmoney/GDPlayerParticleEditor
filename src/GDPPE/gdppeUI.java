@@ -14,6 +14,7 @@ public class gdppeUI {
     int landValue = 10;
     int swingValue = 10;
     int robotValue = 50;
+    int orbValue = 30;
     boolean noParticles = false;
     int changesCounter = 0;
     String fileID = "D:\\Steam\\steamapps\\common\\Geometry Dash\\Resources\\";
@@ -68,14 +69,28 @@ public class gdppeUI {
             }
         });
 
-        noParticle.addActionListener(new ActionListener() {
+        orbSlider.addChangeListener(new ChangeListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                boolean particlesDisabled = noParticle.isSelected();
-                System.out.println(particlesDisabled);
+            public void stateChanged(ChangeEvent e) {
+                int orbVal = orbSlider.getValue();
+                orbLabel.setText("Orb particle amount: " + String.valueOf(orbVal));
             }
         });
 
+        noParticle.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                boolean pParticlesDisabled = noParticle.isSelected();
+                System.out.println("p " + pParticlesDisabled);
+            }
+        });
+        noAll.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                boolean aParticlesDisabled = noAll.isSelected();
+                System.out.println("a " + aParticlesDisabled);
+            }
+        });
         resetDefault.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -85,6 +100,8 @@ public class gdppeUI {
                 swingSlider.setValue(10);
                 landSlider.setValue(10);
                 robotSlider.setValue(50);
+
+                orbSlider.setValue(30);
 
                 statusMessage.setText("default");
             }
@@ -120,6 +137,7 @@ public class gdppeUI {
                 landValue = landSlider.getValue();
                 swingValue = swingSlider.getValue();
                 robotValue = robotSlider.getValue();
+                orbValue = orbSlider.getValue();
                 noParticles = noParticle.isSelected();
                 changesCounter++;
 
@@ -140,12 +158,15 @@ public class gdppeUI {
                     Main.landConfig(landValue, fileID + "landEffect.plist");
                     Main.swingConfig(swingValue, fileID + "swingBurstEffect.plist");
                     Main.robotConfig(robotValue, fileID + "burstEffect2.plist");
+                    Main.orbConfig(orbValue, fileID + "ringEffect.plist");
 
 
                 statusMessage.setText("changes applied (" + changesCounter + ")");
 
             }
         });
+
+
 
     }
 
@@ -176,4 +197,7 @@ public class gdppeUI {
     private JLabel statusMessage;
     private JSlider robotSlider;
     private JLabel robotLabel;
+    private JLabel orbLabel;
+    private JSlider orbSlider;
+    private JRadioButton noAll;
 }

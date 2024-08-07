@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    static void dragConfig(int dragNum, String dragFilePath) {
+    static void dragConfig(int dragNum, String dragFilePath, String particleShape) {
         try {                                   // writes new config to file
             FileWriter editDragConfig = new FileWriter(dragFilePath);
             editDragConfig.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
@@ -113,7 +113,7 @@ public class Main {
                     "\t<key>tangentialAcceleration</key>\n" +
                     "\t<real>0</real>\n" +
                     "\t<key>textureFileName</key>\n" +
-                    "\t<string>square.png</string>\n" +
+                    "\t<string>" + particleShape + ".png</string>\n" +
                     "</dict>\n" +
                     "</plist>\n");
             editDragConfig.close();
@@ -841,15 +841,18 @@ public class Main {
 
     public static void main(String[] args) {
 
-        gdppeUI.run();
+        // gdppeUI.run();
 
-        String dragFilePath = "D:\\Steam\\steamapps\\common\\Geometry Dash\\Resources\\dragEffect.plist"; //default 30
+        //String dragFilePath = "D:\\Steam\\steamapps\\common\\Geometry Dash\\Resources\\dragEffect.plist"; //default 30
+        String dragFilePath = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Geometry Dash\\Resources\\dragEffect.plist";
         String landFilePath = "D:\\Steam\\steamapps\\common\\Geometry Dash\\Resources\\landEffect.plist"; //default 10
         String shipFilePath = "D:\\Steam\\steamapps\\common\\Geometry Dash\\Resources\\shipDragEffect.plist"; //default 40
         String swingFilePath = "D:\\Steam\\steamapps\\common\\Geometry Dash\\Resources\\swingBurstEffect.plist"; //default 10
         String burstFilePath = "D:\\Steam\\steamapps\\common\\Geometry Dash\\Resources\\burstEffect.plist"; //default 50
         String robotFilePath = "D:\\Steam\\steamapps\\common\\Geometry Dash\\Resources\\burstEffect2.plist"; //default 50
         String orbFilePath = "D:\\Steam\\steamapps\\common\\Geometry Dash\\Resources\\ringEffect.plist"; //default 30
+
+
 
         int dragParticles = 30;
         int landParticles = 10;
@@ -863,7 +866,11 @@ public class Main {
         System.out.println("Please enter drag particle amount (0 to turn off, default is 30, 1000+ may affect performance)");
         Scanner dragInput = new Scanner(System.in);
         dragParticles = dragInput.nextInt();
-        dragConfig(dragParticles, dragFilePath);
+        System.out.println("Please enter the shape of particle you want (circle or square (default))"); // temporary shape editor before adding to ui
+        Scanner shapeInput = new Scanner(System.in);
+        String particleShape = shapeInput.nextLine().toLowerCase();
+        System.out.println(particleShape);
+        dragConfig(dragParticles, dragFilePath, particleShape);
         System.out.println(dragParticles);
 
         System.out.println("Please enter land particle amount (0 to turn off, default is 10, 1000+ may affect performance)");
@@ -908,7 +915,7 @@ public class Main {
             Scanner fileReader = new Scanner(ppFile);
             while (fileReader.hasNextLine()) {
                 String contents = fileReader.nextLine();
-                // System.out.println(contents);
+                System.out.println(contents);
             }
             fileReader.close();
         } catch (FileNotFoundException e) {

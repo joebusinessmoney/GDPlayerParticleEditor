@@ -152,7 +152,7 @@ public class gdppeUI {
                     robotValue = 0;
 
                 }
-                    Main.dragConfig(dragValue, fileID + "dragEffect.plist");
+                    Main.dragConfig(dragValue, fileID + "dragEffect.plist", "square");
                     Main.shipConfig(shipValue, fileID + "shipDragEffect.plist");
                     Main.burstConfig(burstValue, fileID + "burstEffect.plist");
                     Main.landConfig(landValue, fileID + "landEffect.plist");

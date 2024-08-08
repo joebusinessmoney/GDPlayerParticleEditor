@@ -30,6 +30,9 @@ public class gdppeUI {
         shape.add(circleShape);
         shape.add(customShape);
 
+
+
+
         dragSlider.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
@@ -192,6 +195,7 @@ public class gdppeUI {
                 changesCounter++;
 
                 System.out.println(noParticles);
+                System.out.println(fileID);
 
                 if (noParticles != false) {
                     dragValue = 0;
@@ -224,6 +228,14 @@ public class gdppeUI {
             }
         });
     }
+        public void setFilePath (String pathSelected) {
+            fileID = pathSelected;
+        }
+
+
+
+
+
 
         static void run() {
             JFrame frame = new JFrame("gdppeUI");

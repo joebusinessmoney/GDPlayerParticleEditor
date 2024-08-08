@@ -16,10 +16,19 @@ public class gdppeUI {
     int robotValue = 50;
     int orbValue = 30;
     boolean noParticles = false;
+    boolean noAllParticles = false;
+    boolean squareParticles = true;
+    boolean circleParticles = false;
+    boolean customParticles = false;
     int changesCounter = 0;
     String fileID = "D:\\Steam\\steamapps\\common\\Geometry Dash\\Resources\\";
 
     public gdppeUI() {
+
+        ButtonGroup shape = new ButtonGroup(); // radio button group
+        shape.add(squareShape);
+        shape.add(circleShape);
+        shape.add(customShape);
 
         dragSlider.addChangeListener(new ChangeListener() {
             @Override
@@ -77,6 +86,30 @@ public class gdppeUI {
             }
         });
 
+        squareShape.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                squareParticles = squareShape.isSelected();
+                System.out.println("sqr " + squareParticles);
+            }
+        });
+
+        circleShape.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                circleParticles = circleShape.isSelected();
+                System.out.println("crc " + circleParticles);
+            }
+        });
+
+        customShape.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                customParticles = customShape.isSelected();
+                System.out.println("cust " + customParticles);
+            }
+        });
+
         noParticle.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -102,6 +135,8 @@ public class gdppeUI {
                 robotSlider.setValue(50);
 
                 orbSlider.setValue(30);
+
+                squareShape.setSelected(true);
 
                 statusMessage.setText("default");
             }
@@ -139,6 +174,21 @@ public class gdppeUI {
                 robotValue = robotSlider.getValue();
                 orbValue = orbSlider.getValue();
                 noParticles = noParticle.isSelected();
+                noAllParticles = noAll.isSelected();
+                squareParticles = squareShape.isSelected();
+                circleParticles = circleShape.isSelected();
+                customParticles = customShape.isSelected();
+                String particleShape = "square";
+
+                if (squareParticles == true) {
+                    particleShape = "square";
+                } else if (circleParticles == true) {
+                    particleShape = "circle";
+                } else if (customParticles == true) {
+                    particleShape = customInput.getText().strip();
+                }
+
+
                 changesCounter++;
 
                 System.out.println(noParticles);
@@ -151,23 +201,28 @@ public class gdppeUI {
                     swingValue = 0;
                     robotValue = 0;
 
+                } if (noAllParticles != false) {
+                    dragValue = 0;
+                    shipValue = 0;
+                    burstValue = 0;
+                    landValue = 0;
+                    swingValue = 0;
+                    robotValue = 0;
+                    orbValue = 0;
                 }
-                    Main.dragConfig(dragValue, fileID + "dragEffect.plist", "square");
-                    Main.shipConfig(shipValue, fileID + "shipDragEffect.plist");
-                    Main.burstConfig(burstValue, fileID + "burstEffect.plist");
-                    Main.landConfig(landValue, fileID + "landEffect.plist");
-                    Main.swingConfig(swingValue, fileID + "swingBurstEffect.plist");
-                    Main.robotConfig(robotValue, fileID + "burstEffect2.plist");
-                    Main.orbConfig(orbValue, fileID + "ringEffect.plist");
+                    Main.dragConfig(dragValue, fileID + "dragEffect.plist", particleShape);
+                    Main.shipConfig(shipValue, fileID + "shipDragEffect.plist", particleShape);
+                    Main.burstConfig(burstValue, fileID + "burstEffect.plist", particleShape);
+                    Main.landConfig(landValue, fileID + "landEffect.plist", particleShape);
+                    Main.swingConfig(swingValue, fileID + "swingBurstEffect.plist", particleShape);
+                    Main.robotConfig(robotValue, fileID + "burstEffect2.plist", particleShape);
+                    Main.orbConfig(orbValue, fileID + "ringEffect.plist", particleShape);
 
 
                 statusMessage.setText("changes applied (" + changesCounter + ")");
 
             }
         });
-
-
-
     }
 
         static void run() {
@@ -200,4 +255,13 @@ public class gdppeUI {
     private JLabel orbLabel;
     private JSlider orbSlider;
     private JRadioButton noAll;
+    private JLabel ppLabel;
+    private JLabel opLabel;
+    private JLabel pShapeLabel;
+    private JRadioButton squareShape;
+    private JRadioButton circleShape;
+    private JRadioButton customShape;
+    private JTextArea customInput;
+
+
 }

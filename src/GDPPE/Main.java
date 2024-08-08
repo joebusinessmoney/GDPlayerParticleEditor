@@ -119,12 +119,13 @@ public class Main {
             editDragConfig.close();
 
             System.out.println("drag config set at " + dragNum);
+            System.out.println("particle shape " + particleShape);
         } catch (IOException e) {
             System.out.println("error setting drag config :(");
             e.printStackTrace();
         }
     }
-    static void landConfig(int landNum, String landFilePath) {
+    static void landConfig(int landNum, String landFilePath, String particleShape) {
         try {
             FileWriter editLandConfig = new FileWriter(landFilePath);
             editLandConfig.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
@@ -232,7 +233,7 @@ public class Main {
                     "\t<key>tangentialAcceleration</key>\n" +
                     "\t<real>0</real>\n" +
                     "\t<key>textureFileName</key>\n" +
-                    "\t<string>square.png</string>\n" +
+                    "\t<string>"+particleShape+".png</string>\n" +
                     "</dict>\n" +
                     "</plist>\n");
             editLandConfig.close();
@@ -243,7 +244,7 @@ public class Main {
         }
 
     }
-    static void shipConfig(int shipNum, String shipFilePath) {
+    static void shipConfig(int shipNum, String shipFilePath, String particleShape) {
         try {
             FileWriter editShipConfig = new FileWriter(shipFilePath);
             editShipConfig.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
@@ -351,7 +352,7 @@ public class Main {
                     "\t<key>tangentialAcceleration</key>\n" +
                     "\t<real>0</real>\n" +
                     "\t<key>textureFileName</key>\n" +
-                    "\t<string>square.png</string>\n" +
+                    "\t<string>"+particleShape+".png</string>\n" +
                     "</dict>\n" +
                     "</plist>\n");
             editShipConfig.close();
@@ -361,7 +362,7 @@ public class Main {
             e.printStackTrace();
         }
     }
-    static void swingConfig(int swingNum, String swingFilePath) {
+    static void swingConfig(int swingNum, String swingFilePath, String particleShape) {
         try {                                   // writes new config to file
             FileWriter editSwingConfig = new FileWriter(swingFilePath);
 
@@ -470,7 +471,7 @@ public class Main {
                     "\t<key>tangentialAcceleration</key>\n" +
                     "\t<real>0</real>\n" +
                     "\t<key>textureFileName</key>\n" +
-                    "\t<string>square.png</string>\n" +
+                    "\t<string>"+particleShape+".png</string>\n" +
                     "</dict>\n" +
                     "</plist>\n");
             editSwingConfig.close();
@@ -481,7 +482,7 @@ public class Main {
             e.printStackTrace();
         }
     }
-    static void burstConfig(int burstNum, String burstFilePath) {
+    static void burstConfig(int burstNum, String burstFilePath, String particleShape) {
         try {
             FileWriter editBurstConfig = new FileWriter(burstFilePath);
             editBurstConfig.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
@@ -589,7 +590,7 @@ public class Main {
                     "\t<key>tangentialAcceleration</key>\n" +
                     "\t<real>0</real>\n" +
                     "\t<key>textureFileName</key>\n" +
-                    "\t<string>square.png</string>\n" +
+                    "\t<string>"+particleShape+".png</string>\n" +
                     "</dict>\n" +
                     "</plist>\n");
             editBurstConfig.close();
@@ -600,7 +601,7 @@ public class Main {
             e.printStackTrace();
         }
     }
-    static void robotConfig(int robotNum, String robotFilePath) {
+    static void robotConfig(int robotNum, String robotFilePath, String particleShape) {
         try {
             FileWriter editRobotConfig = new FileWriter(robotFilePath);
             editRobotConfig.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
@@ -708,7 +709,7 @@ public class Main {
                     "\t<key>tangentialAcceleration</key>\n" +
                     "\t<real>0</real>\n" +
                     "\t<key>textureFileName</key>\n" +
-                    "\t<string>square.png</string>\n" +
+                    "\t<string>"+particleShape+".png</string>\n" +
                     "</dict>\n" +
                     "</plist>\n");
             editRobotConfig.close();
@@ -719,7 +720,7 @@ public class Main {
             e.printStackTrace();
         }
     }
-    static void orbConfig(int orbNum, String orbFilePath) {
+    static void orbConfig(int orbNum, String orbFilePath, String particleShape) {
         try {
             FileWriter editOrbConfig = new FileWriter(orbFilePath);
             editOrbConfig.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
@@ -827,7 +828,7 @@ public class Main {
                     "\t<key>tangentialAcceleration</key>\n" +
                     "\t<real>0.0</real>\n" +
                     "\t<key>textureFileName</key>\n" +
-                    "\t<string>square.png</string>\n" +
+                    "\t<string>"+particleShape+".png</string>\n" +
                     "</dict>\n" +
                     "</plist>\n");
             editOrbConfig.close();
@@ -841,7 +842,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-        // gdppeUI.run();
+        gdppeUI.run();
+
+        // console based version, only used for testing
 
         //String dragFilePath = "D:\\Steam\\steamapps\\common\\Geometry Dash\\Resources\\dragEffect.plist"; //default 30
         String dragFilePath = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Geometry Dash\\Resources\\dragEffect.plist";
@@ -852,8 +855,6 @@ public class Main {
         String robotFilePath = "D:\\Steam\\steamapps\\common\\Geometry Dash\\Resources\\burstEffect2.plist"; //default 50
         String orbFilePath = "D:\\Steam\\steamapps\\common\\Geometry Dash\\Resources\\ringEffect.plist"; //default 30
 
-
-
         int dragParticles = 30;
         int landParticles = 10;
         int shipParticles = 40;
@@ -861,7 +862,6 @@ public class Main {
         int burstParticles = 50;
         int robotParticles = 50;
         int orbParticles = 30;
-
 
         System.out.println("Please enter drag particle amount (0 to turn off, default is 30, 1000+ may affect performance)");
         Scanner dragInput = new Scanner(System.in);
@@ -872,42 +872,42 @@ public class Main {
         System.out.println(particleShape);
         dragConfig(dragParticles, dragFilePath, particleShape);
         System.out.println(dragParticles);
-
-        System.out.println("Please enter land particle amount (0 to turn off, default is 10, 1000+ may affect performance)");
-        Scanner landInput = new Scanner(System.in);
-        landParticles = landInput.nextInt();
-        landConfig(landParticles, landFilePath);
-        System.out.println(landParticles);
-
-        System.out.println("Please enter ship particle amount (0 to turn off, default is 40, 1000+ may affect performance)");
-        Scanner shipInput = new Scanner(System.in);
-        shipParticles = shipInput.nextInt();
-        shipConfig(shipParticles, shipFilePath);
-        System.out.println(shipParticles);
-
-        System.out.println("Please enter swing particle amount (0 to turn off, default is 10, 1000+ may affect performance)");
-        Scanner swingInput = new Scanner(System.in);
-        swingParticles = swingInput.nextInt();
-        swingConfig(swingParticles, swingFilePath);
-        System.out.println(swingParticles);
-
-        System.out.println("Please enter ufo burst particle amount (0 to turn off, default is 50, 1000+ may affect performance)");
-        Scanner burstInput = new Scanner(System.in);
-        burstParticles = burstInput.nextInt();
-        burstConfig(burstParticles, burstFilePath);
-        System.out.println(burstParticles);
-
-        System.out.println("Please enter robot burst particle amount (0 to turn off, default is 50, 1000+ may affect performance)");
-        Scanner robotInput = new Scanner(System.in);
-        robotParticles = robotInput.nextInt();
-        robotConfig(robotParticles, robotFilePath);
-        System.out.println(robotParticles);
-
-        System.out.println("Please enter orb particle amount (0 to turn off, default is 30, 1000+ may affect performance)");
-        Scanner orbInput = new Scanner(System.in);
-        orbParticles = orbInput.nextInt();
-        orbConfig(orbParticles, orbFilePath);
-        System.out.println(orbParticles);
+//
+//        System.out.println("Please enter land particle amount (0 to turn off, default is 10, 1000+ may affect performance)");
+//        Scanner landInput = new Scanner(System.in);
+//        landParticles = landInput.nextInt();
+//        landConfig(landParticles, landFilePath);
+//        System.out.println(landParticles);
+//
+//        System.out.println("Please enter ship particle amount (0 to turn off, default is 40, 1000+ may affect performance)");
+//        Scanner shipInput = new Scanner(System.in);
+//        shipParticles = shipInput.nextInt();
+//        shipConfig(shipParticles, shipFilePath);
+//        System.out.println(shipParticles);
+//
+//        System.out.println("Please enter swing particle amount (0 to turn off, default is 10, 1000+ may affect performance)");
+//        Scanner swingInput = new Scanner(System.in);
+//        swingParticles = swingInput.nextInt();
+//        swingConfig(swingParticles, swingFilePath);
+//        System.out.println(swingParticles);
+//
+//        System.out.println("Please enter ufo burst particle amount (0 to turn off, default is 50, 1000+ may affect performance)");
+//        Scanner burstInput = new Scanner(System.in);
+//        burstParticles = burstInput.nextInt();
+//        burstConfig(burstParticles, burstFilePath);
+//        System.out.println(burstParticles);
+//
+//        System.out.println("Please enter robot burst particle amount (0 to turn off, default is 50, 1000+ may affect performance)");
+//        Scanner robotInput = new Scanner(System.in);
+//        robotParticles = robotInput.nextInt();
+//        robotConfig(robotParticles, robotFilePath);
+//        System.out.println(robotParticles);
+//
+//        System.out.println("Please enter orb particle amount (0 to turn off, default is 30, 1000+ may affect performance)");
+//        Scanner orbInput = new Scanner(System.in);
+//        orbParticles = orbInput.nextInt();
+//        orbConfig(orbParticles, orbFilePath);
+//        System.out.println(orbParticles);
 
 
         try {                               // prints the contents of the dragEffect file to the terminal

@@ -7,6 +7,12 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
+import java.nio.file.Path;
+import java.nio.file.*;
 
 public class gdppeUI {
     int dragValue = 30;
@@ -32,9 +38,6 @@ public class gdppeUI {
         shape.add(squareShape);
         shape.add(circleShape);
         shape.add(customShape);
-
-
-
 
         dragSlider.addChangeListener(new ChangeListener() {
             @Override
@@ -145,6 +148,49 @@ public class gdppeUI {
                 squareShape.setSelected(true);
 
                 statusMessage.setText("default");
+            }
+        });
+
+        uploadImage.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (correctPath == true) {
+                    JFileChooser chooser = new JFileChooser(new File("user.home") + "\\Pictures");
+                    FileNameExtensionFilter pngFilter = new FileNameExtensionFilter("png files (*.png)", "png");
+                    chooser.setFileFilter(pngFilter);
+                    chooser.setDialogTitle("Select picture to upload to GD Resource folder");
+                    chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+                    chooser.setAcceptAllFileFilterUsed(true);
+
+                    if (chooser.showSaveDialog(new JFileChooser()) == JFileChooser.APPROVE_OPTION)
+                    {
+                        String pictureIDLong = chooser.getSelectedFile().getName();
+
+                        if (pictureIDLong.contains(".png") == true) {
+                            pictureID = pictureIDLong.replace(".png","");
+                            System.out.println(pictureID);
+
+
+                            String imgSource = chooser.getSelectedFile().getPath();
+                            String imgName = chooser.getSelectedFile().getName().replaceAll("\\s", "");
+                            System.out.println("sauce " +  imgSource + "   NAMEEEEEEEEEEEEEE " + imgName);
+
+                            try {
+                                FileChannel src = new FileInputStream(imgSource).getChannel();
+                                FileChannel dest = new FileOutputStream(fileID + imgName).getChannel();
+                                dest.transferFrom(src, 0, src.size());
+                                customInput.setText(imgName.replace(".png", ""));
+                            } catch (IOException ex) {
+                                throw new RuntimeException(ex);
+                            }
+
+                        } else {
+                            statusMessage.setText("invalid file type");
+                        }
+                    }
+                } else {
+                    statusMessage.setText("invalid file path");
+                }
             }
         });
 
@@ -262,6 +308,7 @@ public class gdppeUI {
             }
         });
 
+
     }
         public void setFilePath (String pathSelected) {
             fileID = pathSelected;
@@ -305,6 +352,7 @@ public class gdppeUI {
     private JRadioButton customShape;
     private JTextArea customInput;
     private JButton browsePNG;
+    private JButton uploadImage;
 
 
 }

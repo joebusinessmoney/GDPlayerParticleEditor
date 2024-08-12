@@ -3,6 +3,7 @@ package GDPPE;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -22,6 +23,7 @@ public class gdppeUI {
     boolean customParticles = false;
     int changesCounter = 0;
     String fileID = "D:\\Steam\\steamapps\\common\\Geometry Dash\\Resources\\";
+    String pictureID = "square";
     boolean correctPath;
 
     public gdppeUI() {
@@ -146,6 +148,34 @@ public class gdppeUI {
             }
         });
 
+        browsePNG.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (correctPath == true) {
+                    JFileChooser chooser = new JFileChooser(new File(fileID));
+                    FileNameExtensionFilter pngFilter = new FileNameExtensionFilter("png files (*.png)", "png");
+                    chooser.setFileFilter(pngFilter);
+                    chooser.setDialogTitle("Select picture to use as a particle shape");
+                    chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+                    chooser.setAcceptAllFileFilterUsed(true);
+
+                    if (chooser.showSaveDialog(new JFileChooser()) == JFileChooser.APPROVE_OPTION)
+                    {
+                        String pictureIDLong = chooser.getSelectedFile().getName();
+
+                        if (pictureIDLong.contains(".png") == true) {
+                            pictureID = pictureIDLong.replace(".png","");
+                            System.out.println(pictureID);
+                            customInput.setText(pictureID);
+                        } else {
+                            statusMessage.setText("invalid file type");
+                        }
+                    }
+                } else {
+                    statusMessage.setText("invalid file path");
+                }
+            }
+        });
 
         browseFile.addActionListener(new ActionListener() {
             @Override
@@ -166,13 +196,8 @@ public class gdppeUI {
                    } else {
                        statusMessage.setText("invalid file path");
                    }
-
                }
-
-
             }
-
-
         });
         setConfig.addActionListener(new ActionListener() {
             @Override
@@ -234,14 +259,9 @@ public class gdppeUI {
                 } else {
                     statusMessage.setText("invalid file path");
                 }
-
-
-
-
-
-
             }
         });
+
     }
         public void setFilePath (String pathSelected) {
             fileID = pathSelected;
@@ -284,6 +304,7 @@ public class gdppeUI {
     private JRadioButton circleShape;
     private JRadioButton customShape;
     private JTextArea customInput;
+    private JButton browsePNG;
 
 
 }

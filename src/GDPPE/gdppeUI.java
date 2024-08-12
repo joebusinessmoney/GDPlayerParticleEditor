@@ -22,6 +22,7 @@ public class gdppeUI {
     boolean customParticles = false;
     int changesCounter = 0;
     String fileID = "D:\\Steam\\steamapps\\common\\Geometry Dash\\Resources\\";
+    boolean correctPath;
 
     public gdppeUI() {
 
@@ -156,9 +157,16 @@ public class gdppeUI {
 
                if (chooser.showSaveDialog(new JFileChooser()) == JFileChooser.APPROVE_OPTION)
                {
-                   fileID = chooser.getSelectedFile().getPath() + "\\steamapps\\common\\Geometry Dash\\Resources\\";
-                   filePath.setText(fileID);
-                   System.out.println(fileID);
+                   if (chooser.getSelectedFile().getPath().contains("Steam") == true) {
+                       fileID = chooser.getSelectedFile().getPath() + "\\steamapps\\common\\Geometry Dash\\Resources\\";
+                       filePath.setText(fileID);
+                       System.out.println(fileID);
+                       correctPath = true;
+                       statusMessage.setText("");
+                   } else {
+                       statusMessage.setText("invalid file path");
+                   }
+
                }
 
 
@@ -191,12 +199,6 @@ public class gdppeUI {
                     particleShape = customInput.getText().strip();
                 }
 
-
-                changesCounter++;
-
-                System.out.println(noParticles);
-                System.out.println(fileID);
-
                 if (noParticles != false) {
                     dragValue = 0;
                     shipValue = 0;
@@ -214,6 +216,12 @@ public class gdppeUI {
                     robotValue = 0;
                     orbValue = 0;
                 }
+
+                changesCounter++;
+
+                System.out.println(noParticles);
+                System.out.println(fileID);
+                if (correctPath == true) {
                     Main.dragConfig(dragValue, fileID + "dragEffect.plist", particleShape);
                     Main.shipConfig(shipValue, fileID + "shipDragEffect.plist", particleShape);
                     Main.burstConfig(burstValue, fileID + "burstEffect.plist", particleShape);
@@ -222,8 +230,15 @@ public class gdppeUI {
                     Main.robotConfig(robotValue, fileID + "burstEffect2.plist", particleShape);
                     Main.orbConfig(orbValue, fileID + "ringEffect.plist", particleShape);
 
+                    statusMessage.setText("changes applied (" + changesCounter + ")");
+                } else {
+                    statusMessage.setText("invalid file path");
+                }
 
-                statusMessage.setText("changes applied (" + changesCounter + ")");
+
+
+
+
 
             }
         });
@@ -231,11 +246,6 @@ public class gdppeUI {
         public void setFilePath (String pathSelected) {
             fileID = pathSelected;
         }
-
-
-
-
-
 
         static void run() {
             JFrame frame = new JFrame("gdppeUI");

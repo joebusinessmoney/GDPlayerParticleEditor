@@ -4,6 +4,7 @@ import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -11,8 +12,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.channels.FileChannel;
-import java.nio.file.Path;
-import java.nio.file.*;
+import javax.swing.UIManager.*;
 
 public class gdppeUI {
     int dragValue = 30;
@@ -38,6 +38,10 @@ public class gdppeUI {
         shape.add(squareShape);
         shape.add(circleShape);
         shape.add(customShape);
+
+        toolBar.add(importConfig);
+        toolBar.addSeparator();
+
 
         dragSlider.addChangeListener(new ChangeListener() {
             @Override
@@ -315,6 +319,17 @@ public class gdppeUI {
         }
 
         static void run() {
+            try {
+                for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+                    System.out.println(info.getName());
+                    if ("Nimbus".equals(info.getName())) {
+                        UIManager.setLookAndFeel(info.getClassName());
+                        break;
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             JFrame frame = new JFrame("gdppeUI");
             frame.setContentPane(new gdppeUI().gdppeWindow);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -353,6 +368,9 @@ public class gdppeUI {
     private JTextArea customInput;
     private JButton browsePNG;
     private JButton uploadImage;
+    private JLabel filePathLabel;
+    private JButton importConfig;
+    private JToolBar toolBar;
 
 
 }

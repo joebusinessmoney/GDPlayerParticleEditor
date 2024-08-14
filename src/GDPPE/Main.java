@@ -842,7 +842,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-        // pathSelect.run();
         gdppeUI.run();
 
         // console based version, only used for testing

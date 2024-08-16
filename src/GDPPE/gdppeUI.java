@@ -22,6 +22,7 @@ public class gdppeUI {
     int swingValue = 10;
     int robotValue = 50;
     int orbValue = 30;
+    int portalValue = 30;
     boolean noParticles = false;
     boolean noAllParticles = false;
     boolean squareParticles = true;
@@ -98,7 +99,12 @@ public class gdppeUI {
                 orbLabel.setText("Orb particle amount: " + String.valueOf(orbVal));
             }
         });
-
+        portalSlider.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                portalLabel.setText("Portal particle amount: " + String.valueOf(portalSlider.getValue()));
+            }
+        });
         squareShape.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -190,10 +196,13 @@ public class gdppeUI {
 
                         } else {
                             statusMessage.setText("invalid file type");
+                            statusMessage.setForeground(Color.red);
                         }
                     }
                 } else {
                     statusMessage.setText("invalid file path");
+                    statusMessage.setForeground(Color.red);
+
                 }
             }
         });
@@ -219,10 +228,12 @@ public class gdppeUI {
                             customInput.setText(pictureID);
                         } else {
                             statusMessage.setText("invalid file type");
+                            statusMessage.setForeground(Color.red);
                         }
                     }
                 } else {
                     statusMessage.setText("invalid file path");
+                    statusMessage.setForeground(Color.red);
                 }
             }
         });
@@ -245,6 +256,7 @@ public class gdppeUI {
                        statusMessage.setText("");
                    } else {
                        statusMessage.setText("invalid file path");
+                       statusMessage.setForeground(Color.red);
                    }
                }
             }
@@ -259,6 +271,7 @@ public class gdppeUI {
                 swingValue = swingSlider.getValue();
                 robotValue = robotSlider.getValue();
                 orbValue = orbSlider.getValue();
+                portalValue = portalSlider.getValue();
                 noParticles = noParticle.isSelected();
                 noAllParticles = noAll.isSelected();
                 squareParticles = squareShape.isSelected();
@@ -290,6 +303,7 @@ public class gdppeUI {
                     swingValue = 0;
                     robotValue = 0;
                     orbValue = 0;
+                    portalValue = 0;
                 }
 
                 changesCounter++;
@@ -304,19 +318,20 @@ public class gdppeUI {
                     Main.swingConfig(swingValue, fileID + "swingBurstEffect.plist", particleShape);
                     Main.robotConfig(robotValue, fileID + "burstEffect2.plist", particleShape);
                     Main.orbConfig(orbValue, fileID + "ringEffect.plist", particleShape);
+                    Main.portalConfig(portalValue, fileID, particleShape);
 
                     statusMessage.setText("changes applied (" + changesCounter + ")");
+                    statusMessage.setForeground(Color.green);
                 } else {
                     statusMessage.setText("invalid file path");
+                    statusMessage.setForeground(Color.red);
                 }
             }
         });
 
 
+
     }
-        public void setFilePath (String pathSelected) {
-            fileID = pathSelected;
-        }
 
         static void run() {
             try {
@@ -335,6 +350,8 @@ public class gdppeUI {
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.pack();
             frame.setVisible(true);
+
+
         }
     private JPanel gdppeWindow;
     private JLabel title;
@@ -359,8 +376,6 @@ public class gdppeUI {
     private JLabel orbLabel;
     private JSlider orbSlider;
     private JRadioButton noAll;
-    private JLabel ppLabel;
-    private JLabel opLabel;
     private JLabel pShapeLabel;
     private JRadioButton squareShape;
     private JRadioButton circleShape;
@@ -371,6 +386,11 @@ public class gdppeUI {
     private JLabel filePathLabel;
     private JButton importConfig;
     private JToolBar toolBar;
+    private JTabbedPane sliderTabs;
+    private JPanel playerSliders;
+    private JPanel levelSliders;
+    private JSlider portalSlider;
+    private JLabel portalLabel;
 
 
 }

@@ -23,6 +23,8 @@ public class gdppeUI {
     int robotValue = 50;
     int orbValue = 30;
     int portalValue = 30;
+    int padValue = 30;
+    int glitterValue = 30;
     boolean noParticles = false;
     boolean noAllParticles = false;
     boolean squareParticles = true;
@@ -99,12 +101,28 @@ public class gdppeUI {
                 orbLabel.setText("Orb particle amount: " + String.valueOf(orbVal));
             }
         });
+
+        padSlider.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                padLabel.setText("Jump pad particle amount: " + String.valueOf(padSlider.getValue()));
+            }
+        });
+
         portalSlider.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
                 portalLabel.setText("Portal particle amount: " + String.valueOf(portalSlider.getValue()));
             }
         });
+
+        glitterSlider.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                glitterLabel.setText("Glitter particle amount: " + String.valueOf(glitterSlider.getValue()));
+            }
+        });
+
         squareShape.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -154,6 +172,8 @@ public class gdppeUI {
                 robotSlider.setValue(50);
 
                 orbSlider.setValue(30);
+                padSlider.setValue(30);
+                glitterSlider.setValue(30);
 
                 squareShape.setSelected(true);
 
@@ -272,6 +292,8 @@ public class gdppeUI {
                 robotValue = robotSlider.getValue();
                 orbValue = orbSlider.getValue();
                 portalValue = portalSlider.getValue();
+                padValue = padSlider.getValue();
+                glitterValue = glitterSlider.getValue();
                 noParticles = noParticle.isSelected();
                 noAllParticles = noAll.isSelected();
                 squareParticles = squareShape.isSelected();
@@ -304,11 +326,12 @@ public class gdppeUI {
                     robotValue = 0;
                     orbValue = 0;
                     portalValue = 0;
+                    padValue = 0;
+                    glitterValue = 0;
                 }
 
                 changesCounter++;
 
-                System.out.println(noParticles);
                 System.out.println(fileID);
                 if (correctPath == true) {
                     Main.dragConfig(dragValue, fileID + "dragEffect.plist", particleShape);
@@ -319,6 +342,8 @@ public class gdppeUI {
                     Main.robotConfig(robotValue, fileID + "burstEffect2.plist", particleShape);
                     Main.orbConfig(orbValue, fileID + "ringEffect.plist", particleShape);
                     Main.portalConfig(portalValue, fileID, particleShape);
+                    Main.padConfig(padValue, fileID + "bumpEffect.plist", particleShape);
+                    Main.glitterConfig(glitterValue, fileID + "glitterEffect.plist", particleShape);
 
                     statusMessage.setText("changes applied (" + changesCounter + ")");
                     statusMessage.setForeground(Color.green);
@@ -328,8 +353,6 @@ public class gdppeUI {
                 }
             }
         });
-
-
 
     }
 
@@ -391,6 +414,10 @@ public class gdppeUI {
     private JPanel levelSliders;
     private JSlider portalSlider;
     private JLabel portalLabel;
+    private JSlider padSlider;
+    private JLabel padLabel;
+    private JSlider glitterSlider;
+    private JLabel glitterLabel;
 
 
 }

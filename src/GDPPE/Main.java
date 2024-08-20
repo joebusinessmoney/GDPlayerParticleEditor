@@ -947,7 +947,7 @@ public class Main {
                     "\t<key>tangentialAcceleration</key>\n" +
                     "\t<real>0.0</real>\n" +
                     "\t<key>textureFileName</key>\n" +
-                    "\t<string>" + particleShape + "</string>\n" +
+                    "\t<string>" + particleShape + ".png</string>\n" +
                     "</dict>\n" +
                     "</plist>\n");
             editP1Config.close();
@@ -1058,7 +1058,7 @@ public class Main {
                     "\t<key>tangentialAcceleration</key>\n" +
                     "\t<real>0.0</real>\n" +
                     "\t<key>textureFileName</key>\n" +
-                    "\t<string>" +particleShape+"</string>\n" +
+                    "\t<string>" +particleShape+".png</string>\n" +
                     "</dict>\n" +
                     "</plist>\n");
             editP2Config.close();
@@ -1169,7 +1169,7 @@ public class Main {
                     "\t<key>tangentialAcceleration</key>\n" +
                     "\t<real>0.0</real>\n" +
                     "\t<key>textureFileName</key>\n" +
-                    "\t<string>"+particleShape+"</string>\n" +
+                    "\t<string>"+particleShape+".png</string>\n" +
                     "</dict>\n" +
                     "</plist>\n");
             editP3Config.close();
@@ -1280,7 +1280,7 @@ public class Main {
                     "\t<key>tangentialAcceleration</key>\n" +
                     "\t<real>0.0</real>\n" +
                     "\t<key>textureFileName</key>\n" +
-                    "\t<string>"+particleShape+"</string>\n" +
+                    "\t<string>"+particleShape+".png</string>\n" +
                     "</dict>\n" +
                     "</plist>\n");
             editP4Config.close();
@@ -1391,7 +1391,7 @@ public class Main {
                     "\t<key>tangentialAcceleration</key>\n" +
                     "\t<real>-100</real>\n" +
                     "\t<key>textureFileName</key>\n" +
-                    "\t<string>"+particleShape+"</string>\n" +
+                    "\t<string>"+particleShape+".png</string>\n" +
                     "</dict>\n" +
                     "</plist>\n");
             editP8Config.close();
@@ -1502,7 +1502,7 @@ public class Main {
                     "\t<key>tangentialAcceleration</key>\n" +
                     "\t<real>-100</real>\n" +
                     "\t<key>textureFileName</key>\n" +
-                    "\t<string>"+particleShape+"</string>\n" +
+                    "\t<string>"+particleShape+".png</string>\n" +
                     "</dict>\n" +
                     "</plist>\n");
             editP9Config.close();
@@ -1510,6 +1510,244 @@ public class Main {
             System.out.println("portal particle config set at " + portalNum);
         } catch (IOException e) {
             System.out.println("issue setting portal particles config :(");
+            e.printStackTrace();
+        }
+    }
+    static void padConfig (int padNum, String padFilePath, String particleShape) {
+        try {
+            FileWriter editPadConfig = new FileWriter(padFilePath);
+            editPadConfig.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                    "<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n" +
+                    "<plist version=\"1.0\">\n" +
+                    "<dict>\n" +
+                    "\t<key>angle</key>\n" +
+                    "\t<real>90</real>\n" +
+                    "\t<key>angleVariance</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>blendFuncDestination</key>\n" +
+                    "\t<integer>1</integer>\n" +
+                    "\t<key>blendFuncSource</key>\n" +
+                    "\t<integer>770</integer>\n" +
+                    "\t<key>duration</key>\n" +
+                    "\t<real>-1</real>\n" +
+                    "\t<key>emitterType</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>finishColorAlpha</key>\n" +
+                    "\t<real>1</real>\n" +
+                    "\t<key>finishColorBlue</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>finishColorGreen</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>finishColorRed</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>finishColorVarianceAlpha</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>finishColorVarianceBlue</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>finishColorVarianceGreen</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>finishColorVarianceRed</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>finishParticleSize</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>finishParticleSizeVariance</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>gravityx</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>gravityy</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>maxParticles</key>\n" +
+                    "\t<real>"+padNum+"</real>\n" +
+                    "\t<key>maxRadius</key>\n" +
+                    "\t<real>100</real>\n" +
+                    "\t<key>maxRadiusVariance</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>minRadius</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>particleLifespan</key>\n" +
+                    "\t<real>0.40000000596046448</real>\n" +
+                    "\t<key>particleLifespanVariance</key>\n" +
+                    "\t<real>0.20000000298023224</real>\n" +
+                    "\t<key>radialAccelVariance</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>radialAcceleration</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>rotatePerSecond</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>rotatePerSecondVariance</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>rotationEnd</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>rotationEndVariance</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>rotationStart</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>rotationStartVariance</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>sourcePositionVariancex</key>\n" +
+                    "\t<real>14</real>\n" +
+                    "\t<key>sourcePositionVariancey</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>sourcePositionx</key>\n" +
+                    "\t<real>235.82769775390625</real>\n" +
+                    "\t<key>sourcePositiony</key>\n" +
+                    "\t<real>90.322052001953125</real>\n" +
+                    "\t<key>speed</key>\n" +
+                    "\t<real>100</real>\n" +
+                    "\t<key>speedVariance</key>\n" +
+                    "\t<real>20</real>\n" +
+                    "\t<key>startColorAlpha</key>\n" +
+                    "\t<real>1</real>\n" +
+                    "\t<key>startColorBlue</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>startColorGreen</key>\n" +
+                    "\t<real>1</real>\n" +
+                    "\t<key>startColorRed</key>\n" +
+                    "\t<real>1</real>\n" +
+                    "\t<key>startColorVarianceAlpha</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>startColorVarianceBlue</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>startColorVarianceGreen</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>startColorVarianceRed</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>startParticleSize</key>\n" +
+                    "\t<real>3</real>\n" +
+                    "\t<key>startParticleSizeVariance</key>\n" +
+                    "\t<real>1</real>\n" +
+                    "\t<key>tangentialAccelVariance</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>tangentialAcceleration</key>\n" +
+                    "\t<real>0.0</real>\n" +
+                    "\t<key>textureFileName</key>\n" +
+                    "\t<string>"+particleShape+".png</string>\n" +
+                    "</dict>\n" +
+                    "</plist>\n");
+            editPadConfig.close();
+
+            System.out.println("jump pad particle config set at " + padNum);
+        } catch (IOException e) {
+            System.out.println("issue setting jump pad particle config :(");
+            e.printStackTrace();
+        }
+    }
+    static void glitterConfig (int num, String filePath, String particleShape) {
+        try {
+            FileWriter editConfig = new FileWriter(filePath);
+            editConfig.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                    "<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n" +
+                    "<plist version=\"1.0\">\n" +
+                    "<dict>\n" +
+                    "\t<key>angle</key>\n" +
+                    "\t<real>270</real>\n" +
+                    "\t<key>angleVariance</key>\n" +
+                    "\t<real>0</real>\n" +
+                    "\t<key>blendFuncDestination</key>\n" +
+                    "\t<integer>1</integer>\n" +
+                    "\t<key>blendFuncSource</key>\n" +
+                    "\t<integer>770</integer>\n" +
+                    "\t<key>duration</key>\n" +
+                    "\t<real>-1</real>\n" +
+                    "\t<key>emitterType</key>\n" +
+                    "\t<real>0</real>\n" +
+                    "\t<key>finishColorAlpha</key>\n" +
+                    "\t<real>0</real>\n" +
+                    "\t<key>finishColorBlue</key>\n" +
+                    "\t<real>1</real>\n" +
+                    "\t<key>finishColorGreen</key>\n" +
+                    "\t<real>1</real>\n" +
+                    "\t<key>finishColorRed</key>\n" +
+                    "\t<real>1</real>\n" +
+                    "\t<key>finishColorVarianceAlpha</key>\n" +
+                    "\t<real>0</real>\n" +
+                    "\t<key>finishColorVarianceBlue</key>\n" +
+                    "\t<real>0</real>\n" +
+                    "\t<key>finishColorVarianceGreen</key>\n" +
+                    "\t<real>0</real>\n" +
+                    "\t<key>finishColorVarianceRed</key>\n" +
+                    "\t<real>0</real>\n" +
+                    "\t<key>finishParticleSize</key>\n" +
+                    "\t<real>0</real>\n" +
+                    "\t<key>finishParticleSizeVariance</key>\n" +
+                    "\t<real>0</real>\n" +
+                    "\t<key>gravityx</key>\n" +
+                    "\t<real>0</real>\n" +
+                    "\t<key>gravityy</key>\n" +
+                    "\t<real>0</real>\n" +
+                    "\t<key>maxParticles</key>\n" +
+                    "\t<integer>"+num+"</integer>\n" +
+                    "\t<key>maxRadius</key>\n" +
+                    "\t<integer>40</integer>\n" +
+                    "\t<key>maxRadiusVariance</key>\n" +
+                    "\t<real>20</real>\n" +
+                    "\t<key>minRadius</key>\n" +
+                    "\t<real>0</real>\n" +
+                    "\t<key>particleLifespan</key>\n" +
+                    "\t<real>1</real>\n" +
+                    "\t<key>particleLifespanVariance</key>\n" +
+                    "\t<real>0.800000011920929</real>\n" +
+                    "\t<key>radialAccelVariance</key>\n" +
+                    "\t<real>0</real>\n" +
+                    "\t<key>radialAcceleration</key>\n" +
+                    "\t<real>0</real>\n" +
+                    "\t<key>rotatePerSecond</key>\n" +
+                    "\t<real>0</real>\n" +
+                    "\t<key>rotatePerSecondVariance</key>\n" +
+                    "\t<real>0</real>\n" +
+                    "\t<key>rotationEnd</key>\n" +
+                    "\t<real>0</real>\n" +
+                    "\t<key>rotationEndVariance</key>\n" +
+                    "\t<real>0</real>\n" +
+                    "\t<key>rotationStart</key>\n" +
+                    "\t<real>0</real>\n" +
+                    "\t<key>rotationStartVariance</key>\n" +
+                    "\t<real>0</real>\n" +
+                    "\t<key>sourcePositionVariancex</key>\n" +
+                    "\t<real>240</real>\n" +
+                    "\t<key>sourcePositionVariancey</key>\n" +
+                    "\t<real>160</real>\n" +
+                    "\t<key>sourcePositionx</key>\n" +
+                    "\t<real>240</real>\n" +
+                    "\t<key>sourcePositiony</key>\n" +
+                    "\t<real>160</real>\n" +
+                    "\t<key>speed</key>\n" +
+                    "\t<real>0</real>\n" +
+                    "\t<key>speedVariance</key>\n" +
+                    "\t<real>20</real>\n" +
+                    "\t<key>startColorAlpha</key>\n" +
+                    "\t<real>0.3</real>\n" +
+                    "\t<key>startColorBlue</key>\n" +
+                    "\t<integer>1</integer>\n" +
+                    "\t<key>startColorGreen</key>\n" +
+                    "\t<real>1</real>\n" +
+                    "\t<key>startColorRed</key>\n" +
+                    "\t<real>1</real>\n" +
+                    "\t<key>startColorVarianceAlpha</key>\n" +
+                    "\t<real>0.15</real>\n" +
+                    "\t<key>startColorVarianceBlue</key>\n" +
+                    "\t<real>0</real>\n" +
+                    "\t<key>startColorVarianceGreen</key>\n" +
+                    "\t<real>0</real>\n" +
+                    "\t<key>startColorVarianceRed</key>\n" +
+                    "\t<real>0</real>\n" +
+                    "\t<key>startParticleSize</key>\n" +
+                    "\t<real>6</real>\n" +
+                    "\t<key>startParticleSizeVariance</key>\n" +
+                    "\t<real>2</real>\n" +
+                    "\t<key>tangentialAccelVariance</key>\n" +
+                    "\t<real>0</real>\n" +
+                    "\t<key>tangentialAcceleration</key>\n" +
+                    "\t<real>0</real>\n" +
+                    "\t<key>textureFileName</key>\n" +
+                    "\t<string>"+particleShape+".png</string>\n" +
+                    "</dict>\n" +
+                    "</plist>\n");
+            editConfig.close();
+
+            System.out.println("glitter particle config set at " + num);
+        } catch (IOException e) {
+            System.out.println("issue setting glitter particle config :(");
             e.printStackTrace();
         }
     }

@@ -179,7 +179,7 @@
               </component>
             </children>
           </grid>
-          <grid id="a835c" binding="levelSliders" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="a835c" binding="levelSliders" layout-manager="GridLayoutManager" row-count="8" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <tabbedpane title="Level"/>
@@ -221,6 +221,48 @@
               <component id="b73e3" class="javax.swing.JSlider" binding="portalSlider">
                 <constraints>
                   <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <majorTickSpacing value="100"/>
+                  <maximum value="1000"/>
+                  <minorTickSpacing value="10"/>
+                  <paintTicks value="true"/>
+                  <snapToTicks value="true"/>
+                  <value value="30"/>
+                </properties>
+              </component>
+              <component id="9e372" class="javax.swing.JLabel" binding="padLabel">
+                <constraints>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Jump pad particle amount: 30"/>
+                </properties>
+              </component>
+              <component id="d2600" class="javax.swing.JSlider" binding="padSlider">
+                <constraints>
+                  <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <majorTickSpacing value="100"/>
+                  <maximum value="1000"/>
+                  <minorTickSpacing value="10"/>
+                  <paintTicks value="true"/>
+                  <snapToTicks value="true"/>
+                  <value value="30"/>
+                </properties>
+              </component>
+              <component id="a0a3b" class="javax.swing.JLabel" binding="glitterLabel">
+                <constraints>
+                  <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Glitter particle amount: 30"/>
+                </properties>
+              </component>
+              <component id="9396a" class="javax.swing.JSlider" binding="glitterSlider">
+                <constraints>
+                  <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <majorTickSpacing value="100"/>
